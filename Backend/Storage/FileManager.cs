@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Storage
 {
-    class FileManager
+    abstract class FileManager
     {
     }
 }

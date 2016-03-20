@@ -43,12 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionProviders\ActionProvider.cs" />
+    <Compile Include="ActionProviders\Console\ConsoleReaderActionProvider.cs" />
     <Compile Include="Data\DataManager.cs" />
     <Compile Include="Data\SQL\SQLDataManager.cs" />
-    <Compile Include="Interface\TCPInterface.cs" />
+    <Compile Include="Interface\ServerInterface.cs" />
+    <Compile Include="Interface\TCP\TCPInterface.cs" />
     <Compile Include="ProgramMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerAction.cs" />
     <Compile Include="Storage\FileManager.cs" />
+    <Compile Include="Storage\Hierarchical\HierarchicalFileManager.cs" />
     <Compile Include="Users\User.cs" />
     <Compile Include="Users\UserContext.cs" />
     <Compile Include="Users\UserManager.cs" />

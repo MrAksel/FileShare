@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend.Interface
+namespace Backend.ActionProviders
 {
-    class TCPInterface
+    abstract class ActionProvider
     {
+
+        internal abstract ServerAction Dequeue();
     }
 }
