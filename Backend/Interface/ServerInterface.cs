@@ -9,5 +9,10 @@ namespace Backend.Interface
     abstract class ServerInterface
     {
         internal abstract void Run();
+
+        internal void Stop()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -10,6 +10,8 @@ using Backend.Storage;
 using Backend.Storage.Hierarchical;
 using Backend.Interface;
 using Backend.Interface.TCP;
+using Backend.ActionProviders;
+using Backend.ActionProviders.Console;
 
 namespace Backend
 {
@@ -22,9 +24,20 @@ namespace Backend
             DataManager _dataManager = new SQLDataManager();
             FileManager _fileManager = new HierarchicalFileManager();
             UserManager _userManager = new UserManager(_dataManager, _fileManager);
-            
+
             ServerInterface _interface = new TCPInterface();
             _interface.Run();
+
+
+            ActionProvider _provider = new ConsoleReaderActionProvider();
+
+            ServerAction action;
+            while ((action = _provider.Dequeue()).ExitServer == false)
+                if (!action.IsEmpty)
+                    action.PerformAction(_userManager, _fileManager, _dataManager);
+
+
+            _interface.Stop();
         }
     }
 }
