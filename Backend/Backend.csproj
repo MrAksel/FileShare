@@ -44,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\DataManager.cs" />
-    <Compile Include="Data\SQL\SQLDataManger.cs" />
+    <Compile Include="Data\SQL\SQLDataManager.cs" />
     <Compile Include="Interface\TCPInterface.cs" />
     <Compile Include="ProgramMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
