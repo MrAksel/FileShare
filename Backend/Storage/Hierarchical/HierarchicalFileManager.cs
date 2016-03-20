@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend.Data
+namespace Backend.Storage.Hierarchical
 {
-    abstract class DataManager
+    class HierarchicalFileManager : FileManager
     {
     }
 }

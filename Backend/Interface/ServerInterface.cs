@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Backend.Interface
 {
-    class TCPInterface
+    abstract class ServerInterface
     {
+        internal abstract void Run();
     }
 }
