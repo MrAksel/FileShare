@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Backend.Data.SQL
 {
-    class SQLDataManger : DataManager
+    class SQLDataManager : DataManager
     {
     }
 }
