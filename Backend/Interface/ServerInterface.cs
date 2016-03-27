@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Backend.Data;
+using Backend.Requests;
+using Backend.Storage;
+using Backend.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +12,15 @@ namespace Backend.Interface
 {
     abstract class ServerInterface
     {
-        internal abstract void Run();
 
-        internal void Stop()
+        protected internal virtual RequestManager RequestManager { get; protected set; }
+
+        internal ServerInterface(RequestManager requestManager)
         {
-            throw new NotImplementedException();
+            RequestManager = requestManager;
         }
+
+        internal abstract void Run();
+        internal abstract void Stop();
     }
 }

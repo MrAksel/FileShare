@@ -12,6 +12,7 @@ using Backend.Interface;
 using Backend.Interface.TCP;
 using Backend.ActionProviders;
 using Backend.ActionProviders.Console;
+using Backend.Requests;
 
 namespace Backend
 {
@@ -19,13 +20,16 @@ namespace Backend
     {
 
         // Program start
+        // TODO Logging throughout program
         static void Main(string[] args)
         {
             DataManager _dataManager = new SQLDataManager();
             FileManager _fileManager = new HierarchicalFileManager();
             UserManager _userManager = new UserManager(_dataManager, _fileManager);
+            RequestManager _requestManager = new RequestManager(_dataManager, _fileManager, _userManager);
+            
 
-            ServerInterface _interface = new TCPInterface();
+            ServerInterface _interface = new TCPInterface(_requestManager);
             _interface.Run();
 
 
@@ -34,7 +38,7 @@ namespace Backend
             ServerAction action;
             while ((action = _provider.Dequeue()).ExitServer == false)
                 if (!action.IsEmpty)
-                    action.PerformAction(_userManager, _fileManager, _dataManager);
+                    action.PerformAction(_requestManager);
 
 
             _interface.Stop();
