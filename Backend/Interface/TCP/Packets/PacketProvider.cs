@@ -28,7 +28,7 @@ namespace Backend.Interface.TCP.Packets
                 int missing = p.GetMissingByteCount();
                 data = new byte[missing];
                 _dataSource.Read(data, 0, missing);
-                p.FillWithMissing(data);
+                p.SetPayload(data);
             }
             return p;
         }

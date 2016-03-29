@@ -27,7 +27,6 @@ namespace Backend.Interface.TCP
 
         internal void HandleConnection(Socket connectionSocket)
         {
-            // TODO Check race condition when we are closing
             TCPConnectionHandler handler = new TCPConnectionHandler(connectionSocket, _requestManager);
 
             lock (l_connections)

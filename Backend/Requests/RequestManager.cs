@@ -18,6 +18,6 @@ namespace Backend.Requests
         }
 
 
-        // TODO Layout of this class
+        // TODO Layout of this class. Will happen when needed
     }
 }
