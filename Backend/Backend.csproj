@@ -50,10 +50,14 @@
     <Compile Include="Data\DataManager.cs" />
     <Compile Include="Data\SQL\SQLDataManager.cs" />
     <Compile Include="Interface\ServerInterface.cs" />
+    <Compile Include="Interface\TCP\Packets\PacketResult.cs" />
     <Compile Include="Interface\TCP\Packets\DataSources\DataSource.cs" />
+    <Compile Include="Interface\TCP\Packets\Opcode.cs" />
     <Compile Include="Interface\TCP\Packets\DataSources\SocketDataSource.cs" />
     <Compile Include="Interface\TCP\Packets\Packet.cs" />
+    <Compile Include="Interface\TCP\Packets\PacketHandler.cs" />
     <Compile Include="Interface\TCP\Packets\PacketProvider.cs" />
+    <Compile Include="Interface\TCP\Packets\ProtocolMismatchException.cs" />
     <Compile Include="Interface\TCP\TCPConnectionHandler.cs" />
     <Compile Include="Interface\TCP\TCPConnectionListener.cs" />
     <Compile Include="Interface\TCP\TCPConnectionManager.cs" />
@@ -64,6 +68,7 @@
     <Compile Include="ServerAction.cs" />
     <Compile Include="Storage\FileManager.cs" />
     <Compile Include="Storage\Hierarchical\HierarchicalFileManager.cs" />
+    <Compile Include="ThisShouldNeverHappenException.cs" />
     <Compile Include="Users\User.cs" />
     <Compile Include="Users\UserContext.cs" />
     <Compile Include="Users\UserManager.cs" />

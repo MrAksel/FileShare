@@ -48,8 +48,8 @@ namespace Backend.Interface.TCP
 
         private void ProcessPacket(Packet p)
         {
-            // TODO Implement method
-            throw new NotImplementedException();
+            PacketResult result = PacketHandler.HandlePacket(p, _requestManager);
+            // TODO Send result back to client
         }
 
 

@@ -8,11 +8,13 @@ namespace Backend.Interface.TCP.Packets
 {
     class Packet
     {
-        internal const int PACKET_HEADER_SIZE = 8;
+        internal const int PROTOCOL_VERSION = 1;
+        internal const int PACKET_HEADER_SIZE = 12;
 
 
         internal ushort protocol_version;
-        internal ushort opcode;
+        internal Opcode opcode;
+        internal uint request_identifier;
         internal int payload_length;
         internal byte[] payload;
 
@@ -35,13 +37,20 @@ namespace Backend.Interface.TCP.Packets
         {
             if (data == null)
                 throw new ArgumentNullException("data");
-            else if (data.Length < PACKET_HEADER_SIZE)
+            if (data.Length < PACKET_HEADER_SIZE)
                 throw new ArgumentException("'data' doesn't contain enough bytes");
 
             Packet packet = new Packet();
             packet.protocol_version = BitConverter.ToUInt16(data, 0);
-            packet.opcode = BitConverter.ToUInt16(data, 2);
-            packet.payload_length = BitConverter.ToInt32(data, 4);
+
+            if (packet.protocol_version != PROTOCOL_VERSION)
+            {
+                throw new ProtocolMismatchException("Mismatching protocol version");
+            }
+
+            packet.opcode = (Opcode)BitConverter.ToUInt16(data, 2);
+            packet.request_identifier = BitConverter.ToUInt32(data, 4);
+            packet.payload_length = BitConverter.ToInt32(data, 8);
             if (data.Length == PACKET_HEADER_SIZE + packet.payload_length)
             {
                 packet.payload = new byte[packet.payload_length];
