@@ -22,12 +22,11 @@ namespace Backend.Interface.TCP.Packets
             byte[] data = new byte[Packet.PACKET_HEADER_SIZE];
             _dataSource.Read(data, 0, Packet.PACKET_HEADER_SIZE);
 
-            Packet p = Packet.ConstructFromHeader(data);
+            Packet p = PacketFactory.ConstructFromHeader(data);
             if (!p.IsComplete)
             {
-                int missing = p.GetMissingByteCount();
-                data = new byte[missing];
-                _dataSource.Read(data, 0, missing);
+                data = new byte[p.payload_length];
+                _dataSource.Read(data, 0, data.Length);
                 p.SetPayload(data);
             }
             return p;

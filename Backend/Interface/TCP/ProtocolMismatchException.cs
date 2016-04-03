@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Backend.Interface.TCP.Packets
+namespace Backend.Interface.TCP
 {
     class ProtocolMismatchException : Exception
     {

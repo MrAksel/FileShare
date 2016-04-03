@@ -50,6 +50,9 @@
     <Compile Include="Data\DataManager.cs" />
     <Compile Include="Data\SQL\SQLDataManager.cs" />
     <Compile Include="Interface\ServerInterface.cs" />
+    <Compile Include="Interface\TCP\ConnectionStatus.cs" />
+    <Compile Include="Interface\TCP\Packets\PacketFactory.cs" />
+    <Compile Include="Interface\TCP\Packets\PacketEncoder.cs" />
     <Compile Include="Interface\TCP\Packets\PacketResult.cs" />
     <Compile Include="Interface\TCP\Packets\DataSources\DataSource.cs" />
     <Compile Include="Interface\TCP\Packets\Opcode.cs" />
@@ -57,10 +60,11 @@
     <Compile Include="Interface\TCP\Packets\Packet.cs" />
     <Compile Include="Interface\TCP\Packets\PacketHandler.cs" />
     <Compile Include="Interface\TCP\Packets\PacketProvider.cs" />
-    <Compile Include="Interface\TCP\Packets\ProtocolMismatchException.cs" />
+    <Compile Include="Interface\TCP\ProtocolMismatchException.cs" />
     <Compile Include="Interface\TCP\TCPConnectionHandler.cs" />
     <Compile Include="Interface\TCP\TCPConnectionListener.cs" />
     <Compile Include="Interface\TCP\TCPConnectionManager.cs" />
+    <Compile Include="Interface\TCP\TCPConnectionStatus.cs" />
     <Compile Include="Interface\TCP\TCPInterface.cs" />
     <Compile Include="ProgramMain.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

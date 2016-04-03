@@ -14,5 +14,13 @@ namespace Backend
         public ThisShouldNeverHappenException(string message) : base(message)
         {
         }
+
+        public ThisShouldNeverHappenException(string message, Exception underlying) : base(message, underlying)
+        {
+        }
+
+        public ThisShouldNeverHappenException(Exception underlying) : base("This exception shouldn't occur", underlying)
+        {
+        }
     }
 }

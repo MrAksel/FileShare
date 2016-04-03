@@ -11,6 +11,12 @@ namespace Backend.Interface.TCP.Packets
     /// </summary>
     enum Opcode : ushort
     {
+        // Control codes
+        // If updating this make sure to also update IsControlPacket and HandleControlPacket in TCPConnectionHandler.
+        InitiateClose,
+        AckClose1,
+        AckClose2,
+
         // Authentication
         AuthenticateWithCredentials,    // Params: username & password      Returns: session token
         AuthenticateWithTokens,         // Params: selector & validator     Returns: session token          - https://paragonie.com/blog/2015/04/secure-authentication-php-with-long-term-persistence#title.2
