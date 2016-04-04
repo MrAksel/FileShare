@@ -17,6 +17,7 @@ namespace Backend.Interface.TCP
             _onClosedDelegate = onClosedDelegate;
         }
 
+        
         internal void SetStatus(ConnectionStatus status)
         {
             _currentStatus = status;

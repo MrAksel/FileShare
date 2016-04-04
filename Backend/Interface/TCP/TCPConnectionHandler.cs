@@ -69,7 +69,7 @@ namespace Backend.Interface.TCP
                 result = PacketHandler.HandlePacket(p, _requestManager);
             }
 
-            if (result.ShouldCreatePacket)
+            if (result.ShouldCreateResponsePacket)
             {
                 Packet resultPacket = PacketFactory.ConstructFromResult(result);
                 SendPacket(resultPacket);
@@ -83,7 +83,7 @@ namespace Backend.Interface.TCP
                 Packet toSend = _packetsToSend.Take();
                 _packetEncoder.Write(toSend);
 
-                switch(toSend.opcode) // Update status based on packet contents
+                switch (toSend.opcode) // Update status based on packet contents
                 {
                     case Opcode.InitiateClose:
                         _connectionStatus.SetStatus(ConnectionStatus.HostInitiatedClose);
@@ -155,10 +155,10 @@ namespace Backend.Interface.TCP
         private PacketResult HandleAckClose2(Packet p)
         {
             _connectionStatus.SetStatus(ConnectionStatus.ClientSentAck2);
-            PacketResult response = PacketResult.Empty;
+            PacketResult response = new PacketResult(); // Create an empty result
             return response;
         }
-            
+
 
         /// <summary>
         /// Initiates the closing of the connection

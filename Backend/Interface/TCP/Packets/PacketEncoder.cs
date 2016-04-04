@@ -26,7 +26,8 @@ namespace Backend.Interface.TCP.Packets
             Array.Copy(BitConverter.GetBytes(packet.request_identifier), 0, data, 4, 4);
             Array.Copy(BitConverter.GetBytes(packet.payload_length), 0, data, 8, 4);
 
-            Array.Copy(packet.payload, 0, data, Packet.PACKET_HEADER_SIZE, packet.payload_length);  // Copy payload
+            if (packet.payload_length != 0)
+                Array.Copy(packet.payload, 0, data, Packet.PACKET_HEADER_SIZE, packet.payload_length);  // Copy payload
 
             return data;
         }
@@ -37,7 +38,7 @@ namespace Backend.Interface.TCP.Packets
             return SendBytes(packetBytes);
         }
 
-
+        // TODO Move this to a proper class, SocketDataSink or something
         private bool SendBytes(byte[] packetBytes)
         {
             // TODO Handle exceptions

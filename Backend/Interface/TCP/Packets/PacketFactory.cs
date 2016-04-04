@@ -31,15 +31,32 @@ namespace Backend.Interface.TCP.Packets
             return packet;
         }
 
-        // TODO
+
         internal static Packet ConstructFromResult(PacketResult result)
         {
-            throw new NotImplementedException();
+            if (!result.ShouldCreateResponsePacket)
+            {
+                throw new InvalidOperationException("Can't create packets from an empty PacketResult");
+            }
+
+            Packet p = new Packet();
+            p.opcode = result.ResponseOpCode;
+            p.request_identifier = result.RequestIdentifier;
+            p.payload = result.ResponsePayload;
+            p.payload_length = p.payload.Length;
+            p.protocol_version = result.RequestProtocolVersion;
+
+            return p;
         }
 
         internal static Packet CreateClosePacket()
         {
-            throw new NotImplementedException();
+            Packet p = new Packet();
+            p.opcode = Opcode.InitiateClose;
+            p.request_identifier = uint.MaxValue;
+            p.protocol_version = Packet.PROTOCOL_VERSION;
+            p.payload_length = 0;
+            return p;
         }
     }
 }
